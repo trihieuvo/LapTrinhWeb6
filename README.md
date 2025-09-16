@@ -60,9 +60,8 @@
 ---
 
 Phần 2: Script SQL tạo bảng
-Đây là script SQL bạn có thể đặt trong một file tên là database_setup.sql và đưa lên GitHub cùng với README. Script này sẽ xóa database cũ (nếu có) và tạo lại toàn bộ cấu trúc bảng.
-SQL
 
+```SQL
 -- SCRIPT KHỞI TẠO CƠ SỞ DỮ LIỆU VÀ CÁC BẢNG CHO PROJECT 
 -- =================================================================
 
@@ -130,8 +129,8 @@ CREATE TABLE Videos (
     poster NVARCHAR(255) NULL,
     userid INT NULL,
 
-
 );
 GO
 
 PRINT 'Hoan tat viec tao cau truc co so du lieu!';
+```
