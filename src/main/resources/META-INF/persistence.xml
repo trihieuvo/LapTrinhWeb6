@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" 
+    xmlns="https://jakarta.ee/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    
+    <persistence-unit name="BAI04_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Khai báo các lớp Entity của bạn ở đây -->
+        <class>com.votrihieu.BAI04.model.User</class>
+        <class>com.votrihieu.BAI04.model.Category</class>
+        
+        <properties>
+            <!-- Cấu hình kết nối cơ sở dữ liệu SQL Server -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=BAI04_DB;encrypt=false;trustServerCertificate=true" />
+            <property name="jakarta.persistence.jdbc.user" value="sa" />
+            <property name="jakarta.persistence.jdbc.password" value="123" />
+            
+            <!-- Cấu hình riêng của Hibernate -->
+            <!-- Dialect giúp Hibernate tạo ra các câu lệnh SQL tối ưu cho SQL Server -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" /> 
+            
+            <!-- Hiển thị câu lệnh SQL được tạo ra trong console (hữu ích cho việc gỡ lỗi) -->
+            <property name="hibernate.show_sql" value="true" />
+            
+            <!-- Định dạng lại câu lệnh SQL cho dễ đọc -->
+            <property name="hibernate.format_sql" value="true" />
+            
+            <!-- 
+               
+                - validate: Kiểm tra xem schema có khớp với các entity không.
+                - update: Tự động cập nhật schema (thêm cột, bảng) nếu có thay đổi trong entity.
+                - create: Xóa và tạo lại schema mỗi khi khởi động (mất hết dữ liệu).
+                - create-drop: Tạo lại schema khi khởi động và xóa khi đóng.
+                - none: Không làm gì cả.
+                
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+        
+    </persistence-unit>
+</persistence>
